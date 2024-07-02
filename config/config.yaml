@@ -50,7 +50,7 @@ int_columns:
 # Predictors and label related
 label: Fire Alarm
 predictors:
-- Humidity[%]
+- Humidity[%] 
 - Pressure[hPa]
 - PM1.0
 - TVOC[ppb]

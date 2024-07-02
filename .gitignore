@@ -5,3 +5,4 @@ __pycache__/
 /venv_linux/
 /venv_win/
 /venv_iot/
+/smoke_env

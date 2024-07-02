@@ -2,10 +2,12 @@ import streamlit as st
 import requests
 import joblib
 from PIL import Image
+from IPython.display import display
+import json
 
 # Load and set images in the first place
-header_images = Image.open('assets/banner.png')
-st.image(header_images)
+
+# st.image(header_images)
 
 # Add some information about the service
 st.title("Smoke Prediction")
@@ -76,21 +78,22 @@ with st.form(key = "air_data_form"):
     # Condition when form submitted
     if submitted:
         # Create dict of all data in the form
+
         raw_data = {
-            "Temperature": temperature,
+
             "Humidity": humidity,
             "Pressure": pressure,
             "PM1": pm1,
             "TVOC": tvoc,
-            "eCO2": eco2,
             "H2": h2,
             "Ethanol": ethanol
         }
-
+        print(raw_data)
+        # raw_data = json.dumps(raw_data)
         # Create loading animation while predicting
         with st.spinner("Sending data to prediction server ..."):
-            res = requests.post("http://api_backend:8080/predict", json = raw_data).json()
-            
+            res = requests.post("http://108.136.169.48:8000/predict", json = raw_data).json()
+            print(res)
         # Parse the prediction result
         if res["error_msg"] != "":
             st.error("Error Occurs While Predicting: {}".format(res["error_msg"]))
