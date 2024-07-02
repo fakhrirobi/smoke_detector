@@ -38,7 +38,7 @@ with st.form(key = "air_data_form"):
     )
 
     pm1 = st.number_input(
-        label = "4.\tEnter PM1.0 Value:",
+        label = "4.\tEnter PM1.0 Value",
         min_value = 0,
         max_value = 65535,
         help = "Value range from 0 to 65535"
